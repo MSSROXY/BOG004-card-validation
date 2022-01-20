@@ -50,7 +50,7 @@ body {
 /* -----------Tarjeta Delantera -----------*/
 .tarjeta .delantera {
   width: 100%;
-  background: url(img/bg-tarjeta/bg-tarjeta-02.jpg);
+  background: url(img/bg-tarjeta/poker.jpg);
   background-size: cover;
   backface-visibility: hidden;
 }
@@ -75,14 +75,15 @@ body {
 
 .delantera .grupo .label {
   font-size: 16px;
-  color: #7d8994;
+  color: black;
   margin-bottom: 5px;
 }
 
 .delantera .grupo .numero,
 .delantera .grupo .nombre,
 .delantera .grupo .expiracion {
-  color: #fff;
+  color: white;
+  text-shadow: black 0.1em 0.1em 0.2em;
   font-size: 22px;
   text-transform: uppercase;
 }
@@ -95,7 +96,7 @@ body {
 
 /* -----------Tarjeta trasera -----------*/
 .trasera {
-  background: url(img/bg-tarjeta/bg-tarjeta-02.jpg);
+  background: url(img/bg-tarjeta/poker.jpg);
   background-size: cover;
   /*--si quiero que se muestre la tarjeta trasera oculto esto--*/
   position: absolute;

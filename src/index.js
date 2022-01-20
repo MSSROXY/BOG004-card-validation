@@ -1,3 +1,8 @@
+import validator from './validator.js';
+
+console.log(validator);
+
+
 const tarjeta = document.querySelector('#tarjeta'),
   btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
   formulario = document.querySelector('#formulario-tarjeta'),
@@ -49,7 +54,7 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
   formulario.inputNumero.value = valorInput
   //* eliminar espacios blancos
   .replace(/\s/g, '')
-   //* eliminar espacios blancos
+   //* eliminar letras
   .replace(/\D/g, '')
   //* poner espacio cada 4 numeros
   .replace(/([0-9]{4})/g, '$1 ')
@@ -67,7 +72,7 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
   if(valorInput[0] == 4){
     logoMarca.innerHTML = '';
     const imagen = document.createElement('img');
-    imagen.src= 'img/logos/visa.png';
+    imagen.src= 'img/logos/visa2.png';
     logoMarca.appendChild(imagen);
   }
   else if (valorInput[0] == 5){
@@ -121,7 +126,3 @@ formulario.inputCCV.addEventListener('keyup', () => {
 
   ccv.textContent = formulario.inputCCV.value;
 });
-
-import validator from './validator.js';
-
-console.log(validator);
