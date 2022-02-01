@@ -1,7 +1,3 @@
-import validator from './validator.js';
-
-console.log(validator);
-
 
 const tarjeta = document.querySelector('#tarjeta'),
   btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
@@ -32,6 +28,7 @@ btnAbrirFormulario.addEventListener('click', () => {
   formulario.classList.toggle('active');
 });
 
+
 //* Select del mes generado dinámicamente
 for(let i = 1; i <=12; i++){
   let opcion = document.createElement('option');
@@ -57,7 +54,7 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
    //* eliminar letras
   .replace(/\D/g, '')
   //* poner espacio cada 4 numeros
-  .replace(/([0-9]{4})/g, '$1 ')
+  //* no lo uso porque me cuenta los espacios .replace(/([0-9]{4})/g, '$1 ')
   //* eliminar el ultimo espacio
   .trim();
 
@@ -126,3 +123,7 @@ formulario.inputCCV.addEventListener('keyup', () => {
 
   ccv.textContent = formulario.inputCCV.value;
 });
+
+import validator from './validator.js';
+
+console.log(validator);

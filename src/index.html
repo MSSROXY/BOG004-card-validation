@@ -8,22 +8,22 @@
 </head>
 
 <body>
+
+  <div class="contenedor">
   <!-- cabecera -->
   <header>
-    <h1>Casinostop</h1>
+    <img src="img/casinostop.gif" class="casinostop" />
   </header>
   <!-- lista de navegación -->
-  <nav>
-    <ul>
-      <li>Bienvenido</li>
-      <li>Reglamento interno</li>
-      <li>Valide su tarjeta</li>
-      <li>Contacto</li>
-    </ul>
-  </nav>
+  <div class="bienvenida">
+    Antes de ingresar tenemos que validar su tarjeta. Por favor ingrese sus datos
+
+  </div>
+
+
 
   <!-- aquí va el validador -->
-  <div class="contenedor">
+
 
       <!-- tarjeta -->
     <section class="tarjeta" id="tarjeta">
@@ -89,7 +89,7 @@
     <form class="formulario-tarjeta" action="" id="formulario-tarjeta">
       <div class="grupo">
         <label for="inputNumero">Número tarjeta</label>
-        <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
+        <input class='inputNumero' type="text" id="inputNumero" maxlength="16" autocomplete="off">
       </div>
 
       <div class="grupo">
@@ -122,9 +122,11 @@
         </div>
       </div>
 
-      <button type="submit" class="btn-enviar">Validar</button>
 
-    </form>
+      <button id= "btnValidarTarjeta" type="submit" class="btn-enviar">Validar</button>
+      </form>
+
+
   </div>
 
   <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
