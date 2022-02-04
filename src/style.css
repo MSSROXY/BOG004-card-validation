@@ -20,7 +20,7 @@ body {
 }
 
 .bienvenida {
-  width: 100%;
+  width: 90%;
   max-width: 1000px;
   padding: 30px;
   border-radius: 15px;
@@ -209,7 +209,7 @@ body {
   background: #fff;
   width: 100%;
   max-width: 700px;
-  padding: 150px 30px 30px 30px;
+  padding: 180px 30px 30px 30px;
   border-radius: 10px;
   position: relative;
   top: -150px;
@@ -219,6 +219,8 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);-----------*/
   transition: clip-path .3s ease-out;
 }
+
+
 .formulario-tarjeta.active {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }

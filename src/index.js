@@ -8,7 +8,8 @@ const tarjeta = document.querySelector('#tarjeta'),
   firma = document.querySelector('#tarjeta .firma p'),
   mesExpiracion = document.querySelector('#tarjeta #expiracion .mes'),
   yearExpiracion = document.querySelector('#tarjeta #expiracion .year'),
-  ccv = document.querySelector('#tarjeta .ccv');
+  ccv = document.querySelector('#tarjeta .ccv'),
+  numeroTarjetaUsuario = document.getElementById('inputNumero')
 
 //* para voltear la tarjeta al frente
 const mostrarfrente = () => {
@@ -22,11 +23,11 @@ tarjeta.addEventListener('click', () => {
   tarjeta.classList.toggle('active');
 });
 
-//* boton de abrir formulario
-btnAbrirFormulario.addEventListener('click', () => {
-  btnAbrirFormulario.classList.toggle('active');
-  formulario.classList.toggle('active');
-});
+//* boton de abrir formulario (no se usa)
+// btnAbrirFormulario.addEventListener('click', () => {
+//  btnAbrirFormulario.classList.toggle('active');
+//  formulario.classList.toggle('active');
+// });
 
 
 //* Select del mes generado dinámicamente
@@ -123,6 +124,12 @@ formulario.inputCCV.addEventListener('keyup', () => {
 
   ccv.textContent = formulario.inputCCV.value;
 });
+
+btnValidarTarjeta.addEventListener('click', checkCC)
+function checkCC () {
+  if (validator.isValid(numeroTarjetaUsuario.value) == true) { alert ("Su tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " fue aceptada. Bienvenidx a CASINOSTOP")}
+  else { alert ("La tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " no es válida, vuelva a intentarlo")}
+};
 
 import validator from './validator.js';
 

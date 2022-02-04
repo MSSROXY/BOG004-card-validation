@@ -1,6 +1,3 @@
-const numeroTarjeta = document.getElementById('inputNumero')
-
-
 const validator = {
 
   isValid(creditCardNumber){
@@ -21,7 +18,7 @@ const validator = {
         totalPares += parseInt(cc[i])
       }
     }
-    console.log((totalPares + totalImpares));
+
 
     return ((totalPares + totalImpares) % 10 === 0)
   },
@@ -39,13 +36,5 @@ const validator = {
 
 };
 
-console.log(validator.maskify('soy roxy y tengo hambre'))
-
-btnValidarTarjeta.addEventListener('click', checkCC)
-
-function checkCC () {
-  if (validator.isValid(numeroTarjeta.value) == true) { alert ("Su tarjeta " + validator.maskify(numeroTarjeta.value) + " fue aceptada. Bienvenidx a CASINOSTOP")}
-  else { alert ("La tarjeta " + validator.maskify(numeroTarjeta.value) + " no es válida, vuelva a intentarlo")}
-};
 
 export default validator;
