@@ -1,6 +1,6 @@
 const validator = {
 
-  isValid(creditCardNumber){
+  isValid(creditCardNumber) {
 
     var cc = creditCardNumber.split('').reverse();
     var totalPares = 0;
@@ -13,8 +13,7 @@ const validator = {
         } else {
           totalImpares += cc[i] * 2
         }
-      }
-      else {
+      } else {
         totalPares += parseInt(cc[i])
       }
     }
@@ -23,7 +22,7 @@ const validator = {
     return ((totalPares + totalImpares) % 10 === 0)
   },
 
-  maskify(creditCardNumber){
+  maskify(creditCardNumber) {
     var cc = creditCardNumber.split('')
     for (var i = 0; i < cc.length - 4; i++) {
       cc[i] = "#"

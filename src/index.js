@@ -1,9 +1,8 @@
-
 const tarjeta = document.querySelector('#tarjeta'),
-  btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
+  //* no se usa  btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
   formulario = document.querySelector('#formulario-tarjeta'),
-  numeroTarjeta= document.querySelector('#tarjeta .numero'),
-  nombreTarjeta= document.querySelector('#tarjeta .nombre'),
+  numeroTarjeta = document.querySelector('#tarjeta .numero'),
+  nombreTarjeta = document.querySelector('#tarjeta .nombre'),
   logoMarca = document.querySelector('#logo-marca'),
   firma = document.querySelector('#tarjeta .firma p'),
   mesExpiracion = document.querySelector('#tarjeta #expiracion .mes'),
@@ -31,15 +30,15 @@ tarjeta.addEventListener('click', () => {
 
 
 //* Select del mes generado dinámicamente
-for(let i = 1; i <=12; i++){
+for (let i = 1; i <= 12; i++) {
   let opcion = document.createElement('option');
   opcion.value = i;
   opcion.innerText = i;
   formulario.selectMes.appendChild(opcion);
 }
 //* Select del año generado dinámicamente
-const yearActual= new Date().getFullYear ();
-for(let i = yearActual - 8; i<= yearActual + 8; i++){
+const yearActual = new Date().getFullYear();
+for (let i = yearActual - 8; i <= yearActual + 8; i++) {
   let opcion = document.createElement('option');
   opcion.value = i;
   opcion.innerText = i;
@@ -50,33 +49,32 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
   let valorInput = e.target.value;
 
   formulario.inputNumero.value = valorInput
-  //* eliminar espacios blancos
-  .replace(/\s/g, '')
-   //* eliminar letras
-  .replace(/\D/g, '')
-  //* poner espacio cada 4 numeros
-  //* no lo uso porque me cuenta los espacios .replace(/([0-9]{4})/g, '$1 ')
-  //* eliminar el ultimo espacio
-  .trim();
+    //* eliminar espacios blancos
+    .replace(/\s/g, '')
+    //* eliminar letras
+    .replace(/\D/g, '')
+    //* poner espacio cada 4 numeros
+    //* no lo uso porque me cuenta los espacios .replace(/([0-9]{4})/g, '$1 ')
+    //* eliminar el ultimo espacio
+    .trim();
 
-  numeroTarjeta.textContent= valorInput;
+  numeroTarjeta.textContent = valorInput;
 
-  if(valorInput == ''){
+  if (valorInput == '') {
     numeroTarjeta.textContent = '#### #### #### ####';
 
     logoMarca.innerHTML = '';
   }
 
-  if(valorInput[0] == 4){
+  if (valorInput[0] == 4) {
     logoMarca.innerHTML = '';
     const imagen = document.createElement('img');
-    imagen.src= 'img/logos/visa2.png';
+    imagen.src = 'img/logos/visa2.png';
     logoMarca.appendChild(imagen);
-  }
-  else if (valorInput[0] == 5){
+  } else if (valorInput[0] == 5) {
     logoMarca.innerHTML = '';
     const imagen = document.createElement('img');
-    imagen.src= 'img/logos/mastercard.png';
+    imagen.src = 'img/logos/mastercard.png';
     logoMarca.appendChild(imagen);
   }
   //voltear la tarjeta para verse el frente
@@ -87,11 +85,11 @@ formulario.inputNumero.addEventListener('keyup', (e) => {
 formulario.inputNombre.addEventListener('keyup', (e) => {
   let valorInput = e.target.value;
 
-  formulario.inputNombre.value= valorInput.replace(/[0-9]/g,'');
-  nombreTarjeta.textContent= valorInput;
-  firma.textContent= valorInput;
+  formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
+  nombreTarjeta.textContent = valorInput;
+  firma.textContent = valorInput;
 
-  if (valorInput =='') {
+  if (valorInput == '') {
     nombreTarjeta.textContent = 'SU NOMBRE';
   }
 
@@ -99,36 +97,40 @@ formulario.inputNombre.addEventListener('keyup', (e) => {
 });
 
 //* Select mes
-formulario.selectMes.addEventListener('change',(e) => {
-  mesExpiracion.textContent= e.target.value;
+formulario.selectMes.addEventListener('change', (e) => {
+  mesExpiracion.textContent = e.target.value;
   mostrarfrente();
 });
 
 //* Select year
-formulario.selectYear.addEventListener('change',(e) => {
-  yearExpiracion.textContent= e.target.value.slice(2);
+formulario.selectYear.addEventListener('change', (e) => {
+  yearExpiracion.textContent = e.target.value.slice(2);
   mostrarfrente();
 });
 
 //* Select CCV
 formulario.inputCCV.addEventListener('keyup', () => {
-  if(!tarjeta.classList.contains('active')){
+  if (!tarjeta.classList.contains('active')) {
     tarjeta.classList.toggle('active');
   }
 
   formulario.inputCCV.value = formulario.inputCCV.value
-  //* eliminar espacios
-  .replace(/\s/g,'')
-  //* eliminar letras
-  .replace(/\D/g, '');
+    //* eliminar espacios
+    .replace(/\s/g, '')
+    //* eliminar letras
+    .replace(/\D/g, '');
 
   ccv.textContent = formulario.inputCCV.value;
 });
 
 btnValidarTarjeta.addEventListener('click', checkCC)
-function checkCC () {
-  if (validator.isValid(numeroTarjetaUsuario.value) == true) { alert ("Su tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " fue aceptada. Bienvenidx a CASINOSTOP")}
-  else { alert ("La tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " no es válida, vuelva a intentarlo")}
+
+function checkCC() {
+  if (validator.isValid(numeroTarjetaUsuario.value) == true) {
+    alert("Su tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " fue aceptada. Bienvenidx a CASINOSTOP")
+  } else {
+    alert("La tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " no es válida, vuelva a intentarlo")
+  }
 };
 
 import validator from './validator.js';
