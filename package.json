@@ -19,11 +19,30 @@
     "eslint": "^8.3.0",
     "gh-pages": "^3.1.0",
     "htmlhint": "^1.0.0",
-    "jest": "^27.0.1",
     "opener": "^1.5.1",
     "serve": "^13.0.2"
   },
   "engines": {
     "node": ">=14.x"
-  }
+  },
+  "description": "## Índice",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7"
+  },
+  "jest": {
+    "testEnvironment":"node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MSSROXY/BOG004-card-validation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/MSSROXY/BOG004-card-validation/issues"
+  },
+  "homepage": "https://github.com/MSSROXY/BOG004-card-validation#readme"
 }

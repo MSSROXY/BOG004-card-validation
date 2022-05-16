@@ -1,14 +1,117 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Tarjeta de crédito válida</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+    <header>
+      <img src="./img/logo-monopoly-casino.png" alt="Ninja Casino" />
+    </header>
+
+    <main>
+      <section id="screen-one">
+        <div class="welcome-content">
+          <h3>¡Bienvenido!</h3>
+          <p class="p1">Por favor, confirma tu edad</p>
+          <form class="formUserAge">
+            <input type="date" required />
+            <button type="button" id="entryButton">INGRESAR</button>
+          </form>
+          <p class="p2">*Servicio disponible solo para mayores de 18 años</p>
+        </div>
+      </section>
+
+      <section id="screen-two">
+        <div class="content">
+          <div class="content-instruction">
+            <p>
+              MONOPOLY CASINO es un casino online, para poder jugar necesita una
+              tarjeta VISA o MASTERCARD y usar nuestro validador
+            </p>
+          </div>
+
+          <div class="tarjeta" id="tarjeta">
+            <div class="delantera">
+
+              <div class="div-logo">
+                <img class="logo-img" src="img/logos/visa.png" alt="logo" />
+              </div>
+
+              <div class="div-chip">
+                <img src="img/chip-tarjeta.png" class="chip" alt="chip" />
+              </div>
+
+              <div class="numero-grupo" id="numero">
+                <div class="datos-tarjeta">
+                  <p class="label">Número tarjeta</p>
+                  <p class="numero">#### #### #### ####</p>
+                </div>
+              </div>
+
+              <div class="datos-grupo">
+                <div class="nombre-grupo" id="nombre">
+                  <p class="label">Nombre tarjeta</p>
+                  <p class="nombre">CARLOS MARTINEZ</p>
+                </div>
+
+                <div class="expiracion" id="expiracion">
+                  <p class="label">Expiracion</p>
+                  <p class="expiracion">
+                    <span class="mes" id="mes">MM</span> / <span class="year" id="year">AA</span>
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <form action="" class="form-tarjeta" id="form-tarjeta">
+            <div class="form-nombre">
+              <label for="inputNumero">Número tarjeta</label>
+              <input
+                class="inputNumero"
+                type="text"
+                id="inputNumero"
+                maxlength="16"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-numero">
+              <label >Nombre persona</label>
+              <input
+                type="text"
+                id="inputNombre"
+                maxlength="19"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-expiracion">
+              <label>Expiración</label>
+              <div class="expiracion-select">
+                <select name="month" id="selectMes">
+                  <option disabled selected>Mes</option>
+                </select>
+                <select name="year" id="selectYear">
+                  <option disabled selected>Año</option>
+                </select>
+              </div>
+            </div>
+
+            <button id="btnValidarTarjeta" type="submit" class="btn-enviar">
+              Validar
+            </button>
+            
+          </form>
+
+        </div>
+      </section>
+    </main>
+    <footer>Created by Roxy Solano</footer>
     <script src="index.js" type="module"></script>
   </body>
 </html>
