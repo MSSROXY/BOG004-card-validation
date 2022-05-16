@@ -1,4 +1,4 @@
-import { exit } from 'process';
+// import { exit } from 'process';
 import validator from './validator.js';
 
 // PRIMERA PANTALLA
@@ -21,16 +21,15 @@ const showAge = (bornDate) => {
 
 const entryButton = document.getElementById('entryButton');
 entryButton.addEventListener('click', () => {
-  if(myUserAge.value == ''){
-    alert('Por favor ingrese fecha')
-    exit(1);
-  }
+  // if(myUserAge.value == ''){
+  //   alert('Por favor ingrese fecha')
+  //   exit(1);
+  // }
   if(showAge(myUserAge.value)>= 18){
     document.getElementById('screen-one').style.display = 'none';
     document.getElementById('screen-two').style.display = 'flex'
-  }
-  else{
-    alert('Lo sentimos, servicio solo disponible para mayores de 18 años');
+  }if(showAge(myUserAge.value)< 18){
+    alert('Lo sentimos, servicio solo disponible para mayores de 18 años')
   }
 })
 
