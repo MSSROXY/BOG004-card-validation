@@ -1,139 +1,117 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Tarjeta de crédito válida</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="./img/logo-monopoly-casino.png" alt="Ninja Casino" />
+    </header>
 
-<head>
-  <meta charset="utf-8">
-  <title>Tarjeta de crédito válida</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-
-  <div class="contenedor">
-  <!-- cabecera -->
-  <header>
-    <img src="img/casinostop.gif" class="casinostop" />
-  </header>
-  <!-- lista de navegación -->
-  <div class="bienvenida">
-    Antes de ingresar tenemos que validar su tarjeta. Por favor ingrese sus datos
-
-  </div>
-
-
-
-  <!-- aquí va el validador -->
-
-
-      <!-- tarjeta -->
-    <section class="tarjeta" id="tarjeta">
-      <div class="delantera">
-
-        <div class="logo-marca" id="logo-marca">
-        <!-- aqui va el logo de tarjeta  <img src="img/logos/visa.png" alt=""> -->
+    <main>
+      <section id="screen-one">
+        <div class="welcome-content">
+          <h3>¡Bienvenido!</h3>
+          <p class="p1">Por favor, confirma tu edad</p>
+          <form class="formUserAge">
+            <input type="date" required />
+            <button type="button" id="entryButton">INGRESAR</button>
+          </form>
+          <p class="p2">*Servicio disponible solo para mayores de 18 años</p>
         </div>
+      </section>
 
-        <img src="img/chip-tarjeta.png" class="chip " alt="">
-
-        <div class="datos">
-
-          <div class="grupo" id="numero">
-            <p class="label">Número tarjeta</p>
-            <p class="numero">#### #### #### ####</p>
+      <section id="screen-two">
+        <div class="content">
+          <div class="content-instruction">
+            <p>
+              MONOPOLY CASINO es un casino online, para poder jugar necesita una
+              tarjeta VISA o MASTERCARD y usar nuestro validador
+            </p>
           </div>
 
-          <div class="flexbox">
-            <div class="grupo" id="nombre">
-              <p class="label">Nombre Tarjeta</p>
-              <p class="nombre">CARLOS MARTINEZ</p>
-            </div>
+          <div class="tarjeta" id="tarjeta">
+            <div class="delantera">
 
-            <div class="grupo" id="expiracion">
-              <p class="label">Expiracion</p>
-              <p class="expiracion"><span class="mes">MM</span> / <span class="year">AA</span></p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="trasera">
-        <div class="barra-magnetica"></div>
-        <div class="datos">
-          <div class="grupo" id="firma">
-            <p class="label">Firma</p>
-            <div class="firma"> <p></p> </div>
-          </div>
-
-          <div class="grupo" id="ccv">
-            <p class="label">CCV</p>
-            <p class="ccv"></p>
-          </div>
-
-        </div>
-
-        <p class="leyenda"> Aquí va el texto debajo de la firma que nadie sabe qué dice porque no se lee nunca.</p>
-        <a href="#" class="link-banco">www.tubanco.com</a>
-      </div>
-
-    </section>
-
-      <!-- contenedor boton abrir formulario, no se usa-->
-    <!-- <div class="contenedor-btn">
-      <button class="btn-abrir-formulario" id="btn-abrir-formulario">
-        <i class="fas fa-plus"></i>
-      </button>
-    </div> -->
-
-      <!-- formulario-->
-    <form class="formulario-tarjeta" action="" id="formulario-tarjeta">
-      <div class="grupo">
-        <label for="inputNumero">Número tarjeta</label>
-        <input class='inputNumero' type="text" id="inputNumero" maxlength="16" autocomplete="off">
-      </div>
-
-      <div class="grupo">
-        <label for="inputNombre">Nombre persona</label>
-        <input type="text" id="inputNombre" maxlength="19" autocomplete="off">
-      </div>
-
-      <div class="flexbox">
-        <div class="grupo expira">
-          <label for="selectMes">Expiración</label>
-            <div class="flexbox">
-              <div class="grupo-select">
-                <select name="mes" id="selectMes">
-                  <option disabled selected>Mes</option>
-                  <i class="fas fa-angle-down"></i>
-                </select>
+              <div class="div-logo">
+                <img class="logo-img" src="img/logos/visa.png" alt="logo" />
               </div>
-              <div class="grupo-select">
+
+              <div class="div-chip">
+                <img src="img/chip-tarjeta.png" class="chip" alt="chip" />
+              </div>
+
+              <div class="numero-grupo" id="numero">
+                <div class="datos-tarjeta">
+                  <p class="label">Número tarjeta</p>
+                  <p class="numero">#### #### #### ####</p>
+                </div>
+              </div>
+
+              <div class="datos-grupo">
+                <div class="nombre-grupo" id="nombre">
+                  <p class="label">Nombre tarjeta</p>
+                  <p class="nombre">CARLOS MARTINEZ</p>
+                </div>
+
+                <div class="expiracion" id="expiracion">
+                  <p class="label">Expiracion</p>
+                  <p class="expiracion">
+                    <span class="mes" id="mes">MM</span> / <span class="year" id="year">AA</span>
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <form action="" class="form-tarjeta" id="form-tarjeta">
+            <div class="form-nombre">
+              <label for="inputNumero">Número tarjeta</label>
+              <input
+                class="inputNumero"
+                type="text"
+                id="inputNumero"
+                maxlength="16"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-numero">
+              <label >Nombre persona</label>
+              <input
+                type="text"
+                id="inputNombre"
+                maxlength="19"
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="form-expiracion">
+              <label>Expiración</label>
+              <div class="expiracion-select">
+                <select name="month" id="selectMes">
+                  <option disabled selected>Mes</option>
+                </select>
                 <select name="year" id="selectYear">
                   <option disabled selected>Año</option>
-                  <!-- no me funciona el boton :( <i class="fas fa-angle-down"></i> -->
                 </select>
               </div>
             </div>
+
+            <button id="btnValidarTarjeta" type="submit" class="btn-enviar">
+              Validar
+            </button>
+            
+          </form>
+
         </div>
-
-        <div class="grupo ccv">
-          <label for="inputCCV">CCV</label>
-          <input type="text" id="inputCCV" maxlength="3">
-        </div>
-      </div>
-
-
-      <button id= "btnValidarTarjeta" type="submit" class="btn-enviar">Validar</button>
-      </form>
-
-
-  </div>
-
-  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
-  <script src="index.js" type="module"></script>
-  <main></main>
-  <footer></footer>
-
-</body>
-
+      </section>
+    </main>
+    <footer>Created by Roxy Solano</footer>
+    <script src="index.js" type="module"></script>
+  </body>
 </html>

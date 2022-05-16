@@ -1,33 +1,47 @@
-const tarjeta = document.querySelector('#tarjeta'),
-  //* no se usa  btnAbrirFormulario = document.querySelector('#btn-abrir-formulario'),
-  formulario = document.querySelector('#formulario-tarjeta'),
-  numeroTarjeta = document.querySelector('#tarjeta .numero'),
-  nombreTarjeta = document.querySelector('#tarjeta .nombre'),
-  logoMarca = document.querySelector('#logo-marca'),
-  firma = document.querySelector('#tarjeta .firma p'),
-  mesExpiracion = document.querySelector('#tarjeta #expiracion .mes'),
-  yearExpiracion = document.querySelector('#tarjeta #expiracion .year'),
-  ccv = document.querySelector('#tarjeta .ccv'),
-  numeroTarjetaUsuario = document.getElementById('inputNumero')
+import validator from './validator.js';
 
-//* para voltear la tarjeta al frente
-const mostrarfrente = () => {
-  if (tarjeta.classList.contains('active')) {
-    tarjeta.classList.remove('active');
+// PRIMERA PANTALLA
+document.getElementById('screen-two').style.display = 'none';
+// document.getElementById('screen-one').style.display = 'none';
+// document.getElementById('screen-two').style.display = 'flex';
+
+const myUserAge = document.querySelector('input[type="date"]');
+
+const showAge = (bornDate) => {
+  var today = new Date();
+  var birthday = new Date(bornDate);
+  var age = today.getFullYear() - birthday.getFullYear();
+  var monthAge = today.getMonth() - birthday.getMonth();
+  if (monthAge <0 || (monthAge ===0 && today.getDate() < birthday.getDate())) {
+    age--;
   }
-};
+  return age
+}
 
-// * rotacion de la tarjeta
-tarjeta.addEventListener('click', () => {
-  tarjeta.classList.toggle('active');
-});
+const entryButton = document.getElementById('entryButton');
+entryButton.addEventListener('click', () => {
+  if(myUserAge.value == ''){
+    alert('Por favor ingrese fecha')
+    process.exit();
+  }
+  if(showAge(myUserAge.value)>= 18){
+    document.getElementById('screen-one').style.display = 'none';
+    document.getElementById('screen-two').style.display = 'flex'
+  }
+  else{
+    alert('Lo sentimos, servicio solo disponible para mayores de 18 años');
+  }
+})
 
-//* boton de abrir formulario (no se usa)
-// btnAbrirFormulario.addEventListener('click', () => {
-//  btnAbrirFormulario.classList.toggle('active');
-//  formulario.classList.toggle('active');
-// });
+// SEGUNDA PANTALLA
 
+const formulario = document.querySelector('#form-tarjeta');
+const numeroTarjeta = document.querySelector('.numero-grupo .numero');
+const nombreTarjeta =document.querySelector('.datos-grupo .nombre');
+const mesExpiracion = document.querySelector('.expiracion .mes');
+const yearExpiracion = document.querySelector('.expiracion .year');
+const btnValidarTarjeta = document.querySelector('#btnValidarTarjeta');
+const numeroTarjetaUsuario = document.getElementById('inputNumero');
 
 //* Select del mes generado dinámicamente
 for (let i = 1; i <= 12; i++) {
@@ -36,6 +50,7 @@ for (let i = 1; i <= 12; i++) {
   opcion.innerText = i;
   formulario.selectMes.appendChild(opcion);
 }
+
 //* Select del año generado dinámicamente
 const yearActual = new Date().getFullYear();
 for (let i = yearActual - 8; i <= yearActual + 8; i++) {
@@ -44,95 +59,54 @@ for (let i = yearActual - 8; i <= yearActual + 8; i++) {
   opcion.innerText = i;
   formulario.selectYear.appendChild(opcion);
 }
-//* Input numero de Tarjeta
+
+// //* Input numero de Tarjeta
 formulario.inputNumero.addEventListener('keyup', (e) => {
   let valorInput = e.target.value;
-
   formulario.inputNumero.value = valorInput
     //* eliminar espacios blancos
     .replace(/\s/g, '')
     //* eliminar letras
     .replace(/\D/g, '')
-    //* poner espacio cada 4 numeros
-    //* no lo uso porque me cuenta los espacios .replace(/([0-9]{4})/g, '$1 ')
     //* eliminar el ultimo espacio
     .trim();
 
   numeroTarjeta.textContent = valorInput;
 
-  if (valorInput == '') {
-    numeroTarjeta.textContent = '#### #### #### ####';
-
-    logoMarca.innerHTML = '';
-  }
-
-  if (valorInput[0] == 4) {
-    logoMarca.innerHTML = '';
-    const imagen = document.createElement('img');
-    imagen.src = 'img/logos/visa2.png';
-    logoMarca.appendChild(imagen);
-  } else if (valorInput[0] == 5) {
-    logoMarca.innerHTML = '';
-    const imagen = document.createElement('img');
-    imagen.src = 'img/logos/mastercard.png';
-    logoMarca.appendChild(imagen);
-  }
-  //voltear la tarjeta para verse el frente
-  mostrarfrente();
 });
 
-//* Input nombre de la tarjerta
+// //* Input nombre de la tarjerta
 formulario.inputNombre.addEventListener('keyup', (e) => {
   let valorInput = e.target.value;
-
   formulario.inputNombre.value = valorInput.replace(/[0-9]/g, '');
   nombreTarjeta.textContent = valorInput;
-  firma.textContent = valorInput;
 
   if (valorInput == '') {
     nombreTarjeta.textContent = 'SU NOMBRE';
   }
-
-  mostrarfrente();
 });
 
-//* Select mes
+// //* Select mes
 formulario.selectMes.addEventListener('change', (e) => {
   mesExpiracion.textContent = e.target.value;
-  mostrarfrente();
 });
 
-//* Select year
+// //* Select year
 formulario.selectYear.addEventListener('change', (e) => {
   yearExpiracion.textContent = e.target.value.slice(2);
-  mostrarfrente();
 });
 
-//* Select CCV
-formulario.inputCCV.addEventListener('keyup', () => {
-  if (!tarjeta.classList.contains('active')) {
-    tarjeta.classList.toggle('active');
-  }
-
-  formulario.inputCCV.value = formulario.inputCCV.value
-    //* eliminar espacios
-    .replace(/\s/g, '')
-    //* eliminar letras
-    .replace(/\D/g, '');
-
-  ccv.textContent = formulario.inputCCV.value;
-});
-
-btnValidarTarjeta.addEventListener('click', checkCC)
+// VALIDACION DE TARJETA
 
 function checkCC() {
   if (validator.isValid(numeroTarjetaUsuario.value) == true) {
-    alert("Su tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " fue aceptada. Bienvenidx a CASINOSTOP")
+    alert("Su tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " fue aceptada. Bienvenido a MONOPOLY CASINO")
   } else {
     alert("La tarjeta " + validator.maskify(numeroTarjetaUsuario.value) + " no es válida, vuelva a intentarlo")
   }
-};
+}
 
-import validator from './validator.js';
+btnValidarTarjeta.addEventListener('click', checkCC)
 
-console.log(validator);
+
+// console.log(validator);
