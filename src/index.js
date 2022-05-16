@@ -1,3 +1,4 @@
+import { exit } from 'process';
 import validator from './validator.js';
 
 // PRIMERA PANTALLA
@@ -22,7 +23,7 @@ const entryButton = document.getElementById('entryButton');
 entryButton.addEventListener('click', () => {
   if(myUserAge.value == ''){
     alert('Por favor ingrese fecha')
-    process.exit();
+    exit(1);
   }
   if(showAge(myUserAge.value)>= 18){
     document.getElementById('screen-one').style.display = 'none';
